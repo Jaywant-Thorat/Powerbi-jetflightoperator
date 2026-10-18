@@ -1,0 +1,9 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "aab673e411aa598f904e",
+  "displayName": "Recette",
+  "displayOption": "FitToPage",
+  "height": 1120,
+  "width": 1440,
+  "visibility": "HiddenInViewMode"
+}

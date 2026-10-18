@@ -1,0 +1,243 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 867.632139631204,
+            "y": 326.53009528423149
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "2cbbc06b-3c68-59b9-bf05-12ed20aa5926",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 347.65181288861169,
+            "y": -50
+          },
+          "nodeIndex": "DimAircraft",
+          "nodeLineageTag": "b2fc6646-cd59-502a-bb42-9556440de9e0",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1151.6321396312042,
+            "y": 376.53009528423149
+          },
+          "nodeIndex": "DimAirport",
+          "nodeLineageTag": "0ef50eaf-970c-5173-9e5d-460eee46f382",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 58.842574638329779,
+            "y": -5.36024216671683
+          },
+          "nodeIndex": "DimClient",
+          "nodeLineageTag": "2c5b9588-dfe7-5a01-b2df-fc72ddae7840",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 603.060190568463
+          },
+          "nodeIndex": "DimDate",
+          "nodeLineageTag": "4efb0833-26c1-5d40-9c3b-c30f49bc5497",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 633.63213963120393,
+            "y": -11.445952668514792
+          },
+          "nodeIndex": "DimModel",
+          "nodeLineageTag": "b6e099de-9ddf-5fc6-aacc-9440266734bc",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 342.76214851109995,
+            "y": 336.48015344077032
+          },
+          "nodeIndex": "FactFlight",
+          "nodeLineageTag": "6af2dac3-7298-52bd-aa1b-49acc7c4ccc8",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1435.6321396312042,
+            "y": 412.53009528423149
+          },
+          "nodeIndex": "Fleet picker",
+          "nodeLineageTag": "63d3e9c3-879f-543b-894c-92945a0e7837",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1719.6321396312042,
+            "y": 400.53009528423149
+          },
+          "nodeIndex": "Flight picker",
+          "nodeLineageTag": "648f9ed8-f8ed-5d41-acc2-c6623155dc70",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2003.6321396312042,
+            "y": 412.53009528423149
+          },
+          "nodeIndex": "Gauge mode",
+          "nodeLineageTag": "14e05aa8-e9be-5879-b609-e18c01f87103",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2287.6321396312042,
+            "y": 412.53009528423149
+          },
+          "nodeIndex": "Map mode",
+          "nodeLineageTag": "b744f1c1-40a1-5d7f-9e65-d0f4a7b33fe4",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2571.6321396312042,
+            "y": 412.53009528423149
+          },
+          "nodeIndex": "Period",
+          "nodeLineageTag": "dd3dccdd-f2f2-56fa-97be-0d1292a4a89c",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2855.6321396312042,
+            "y": 412.53009528423149
+          },
+          "nodeIndex": "Theme",
+          "nodeLineageTag": "06562af6-b1ab-5b6c-8862-faed80c1a9fc",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3089.6321396312042,
+            "y": 388.53009528423149
+          },
+          "nodeIndex": "Avatar image",
+          "nodeLineageTag": "1c8e75bb-e7e4-5bff-9367-f51047f477a3",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3373.6321396312042,
+            "y": 364.53009528423149
+          },
+          "nodeIndex": "FactCancellation",
+          "nodeLineageTag": "b4d86f12-b79c-53af-83a9-6928372e6828",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3657.6321396312042,
+            "y": 412.53009528423149
+          },
+          "nodeIndex": "Flight status",
+          "nodeLineageTag": "f76fc9bb-dd45-525e-bb19-410730c96bff",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3941.6321396312042,
+            "y": 388.53009528423149
+          },
+          "nodeIndex": "Jet image",
+          "nodeLineageTag": "1c6e8eb2-6491-5440-a8ad-4284d6f4b853",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

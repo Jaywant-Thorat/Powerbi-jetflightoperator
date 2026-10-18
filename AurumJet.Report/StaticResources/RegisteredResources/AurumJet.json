@@ -1,0 +1,88 @@
+{
+  "name": "AurumJet.json",
+  "dataColors": [
+    "#C89C50",
+    "#151515",
+    "#D0A65C",
+    "#E5CFA5",
+    "#8C8C8C",
+    "#2F9E5B",
+    "#D9534F",
+    "#AF7F31"
+  ],
+  "background": "#FEFEFE",
+  "foreground": "#191A21",
+  "tableAccent": "#C89C50",
+  "good": "#2F9E5B",
+  "neutral": "#C89C50",
+  "bad": "#D9534F",
+  "maximum": "#C89C50",
+  "center": "#E5CFA5",
+  "minimum": "#F6F6F7",
+  "textClasses": {
+    "callout": {
+      "fontSize": 28,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#191A21"
+    },
+    "title": {
+      "fontSize": 14,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#191A21"
+    },
+    "header": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#191A21"
+    },
+    "label": {
+      "fontSize": 10,
+      "fontFace": "Segoe UI",
+      "color": "#8C8C8C"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": false
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": false
+          }
+        ],
+        "title": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "#FEFEFE"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

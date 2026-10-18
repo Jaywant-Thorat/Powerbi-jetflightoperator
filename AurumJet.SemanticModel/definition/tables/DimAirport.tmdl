@@ -1,0 +1,64 @@
+table DimAirport
+	lineageTag: 0ef50eaf-970c-5173-9e5d-460eee46f382
+
+	column AirportCode
+		dataType: string
+		lineageTag: 7c371ca7-9347-5de1-8644-e0259c827a59
+		summarizeBy: none
+		sourceColumn: AirportCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: f89cc9e8-f6a7-50db-876d-688469f90a01
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 20574b44-4e80-51ff-a65d-e87fe2c06b3e
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: double
+		formatString: 0.000
+		lineageTag: 51323b3a-fbb5-56ba-9cc6-5c06084ccd2c
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: double
+		formatString: 0.000
+		lineageTag: ead31ab7-ec0b-5357-92bf-3fbbd940b129
+		summarizeBy: none
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: c7d1944e-3f7a-599b-8895-06762197970c
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimAirport = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DossierDonnees & "DimAirport.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"AirportCode", type text}, {"City", type text}, {"Country", type text}, {"Latitude", type number}, {"Longitude", type number}, {"Region", type text}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

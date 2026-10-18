@@ -1,0 +1,42 @@
+table DimAircraft
+	lineageTag: b2fc6646-cd59-502a-bb42-9556440de9e0
+
+	column AircraftID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b50a56d7-7e59-58b9-bf85-ca0c4ddbf1d1
+		summarizeBy: none
+		sourceColumn: AircraftID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tail
+		dataType: string
+		lineageTag: b5ad6f73-e6e8-561a-a5ea-57258b42811f
+		summarizeBy: none
+		sourceColumn: Tail
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModelID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5f2ea019-ebdd-5e44-8493-b89a58b486b1
+		summarizeBy: none
+		sourceColumn: ModelID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimAircraft = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DossierDonnees & "DimAircraft.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"AircraftID", Int64.Type}, {"Tail", type text}, {"ModelID", Int64.Type}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

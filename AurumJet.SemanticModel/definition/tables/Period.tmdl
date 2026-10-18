@@ -1,0 +1,26 @@
+table Period
+	lineageTag: dd3dccdd-f2f2-56fa-97be-0d1292a4a89c
+
+	column Period
+		dataType: string
+		lineageTag: 1d32a91c-5cae-535e-8855-7f98ceaa6e3b
+		summarizeBy: none
+		sourceColumn: [Period]
+		sortByColumn: Ordre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordre
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4a88cd22-b100-5b98-b7dd-5de3f6c7b8f3
+		summarizeBy: none
+		sourceColumn: [Ordre]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Period = calculated
+		mode: import
+		source = DATATABLE ( "Period", STRING, "Ordre", INTEGER, { { "Today", 1 }, { "Week", 2 }, { "Month", 3 }, { "Year", 4 } } )
+

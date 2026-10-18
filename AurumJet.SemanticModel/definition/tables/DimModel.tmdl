@@ -1,0 +1,104 @@
+table DimModel
+	lineageTag: b6e099de-9ddf-5fc6-aacc-9440266734bc
+
+	column ModelID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1295e840-f457-5bfa-856c-baa34f61aac0
+		summarizeBy: none
+		sourceColumn: ModelID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Model
+		dataType: string
+		lineageTag: 0d5ec85d-ac9d-552b-a670-37f1b25c7578
+		summarizeBy: none
+		sourceColumn: Model
+		sortByColumn: ModelID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Code
+		dataType: string
+		lineageTag: c0eb37d3-a426-56f5-ac11-7621e020ea1e
+		summarizeBy: none
+		sourceColumn: Code
+		sortByColumn: ModelID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: b06e85fe-51bb-562f-8208-a4b9149d7185
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Seats
+		dataType: int64
+		formatString: 0
+		lineageTag: 48633d45-8131-570f-81da-a229cd3353ae
+		summarizeBy: none
+		sourceColumn: Seats
+
+		annotation SummarizationSetBy = Automatic
+
+	column RangeKm
+		dataType: int64
+		formatString: #,0
+		lineageTag: a1603d4d-f8b0-5f68-b7ad-4efd09e28712
+		summarizeBy: none
+		sourceColumn: RangeKm
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaxSpeedKmh
+		dataType: int64
+		formatString: #,0
+		lineageTag: 35105ebc-3318-5020-8f0c-5a4a7ed03257
+		summarizeBy: none
+		sourceColumn: MaxSpeedKmh
+
+		annotation SummarizationSetBy = Automatic
+
+	column HeightM
+		dataType: double
+		formatString: 0.0
+		lineageTag: 9727d2ba-2ac1-58a7-94ce-eaa1b6a82b58
+		summarizeBy: none
+		sourceColumn: HeightM
+
+		annotation SummarizationSetBy = Automatic
+
+	column CruiseKnots
+		dataType: int64
+		formatString: 0
+		lineageTag: e220bbd1-9eae-52ef-92bf-631a9ddbdda5
+		summarizeBy: none
+		sourceColumn: CruiseKnots
+
+		annotation SummarizationSetBy = Automatic
+
+	column HourlyRateEUR
+		dataType: int64
+		formatString: #,0 €
+		lineageTag: 1e2bbe22-33aa-5794-8a42-c7de242cdbe7
+		summarizeBy: none
+		sourceColumn: HourlyRateEUR
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimModel = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DossierDonnees & "DimModel.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"ModelID", Int64.Type}, {"Model", type text}, {"Code", type text}, {"Category", type text}, {"Seats", Int64.Type}, {"RangeKm", Int64.Type}, {"MaxSpeedKmh", Int64.Type}, {"HeightM", type number}, {"CruiseKnots", Int64.Type}, {"HourlyRateEUR", Int64.Type}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,26 @@
+table 'Flight status'
+	lineageTag: f76fc9bb-dd45-525e-bb19-410730c96bff
+
+	column Status
+		dataType: string
+		lineageTag: 1f65a657-5e00-509b-ad31-3298f95f3cc7
+		summarizeBy: none
+		sourceColumn: [Status]
+		sortByColumn: Ordre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordre
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0ad0ed6e-c188-5ba1-bf00-3b71d76d13c7
+		summarizeBy: none
+		sourceColumn: [Ordre]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Flight status' = calculated
+		mode: import
+		source = DATATABLE ( "Status", STRING, "Ordre", INTEGER, { { "All", 1 }, { "In progress", 2 }, { "Scheduled", 3 }, { "Completed", 4 } } )
+

@@ -1,0 +1,26 @@
+table 'Fleet picker'
+	lineageTag: 63d3e9c3-879f-543b-894c-92945a0e7837
+
+	column Code
+		dataType: string
+		lineageTag: 126b348d-05e1-509a-a468-dc0bd5b039f1
+		summarizeBy: none
+		sourceColumn: [Code]
+		sortByColumn: ModelID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModelID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4ca7c578-4b89-5d34-bcc6-a5ee1a1bc0d8
+		summarizeBy: none
+		sourceColumn: [ModelID]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fleet picker' = calculated
+		mode: import
+		source = DATATABLE ( "Code", STRING, "ModelID", INTEGER, { { "X7", 1 }, { "S5", 2 }, { "M4", 3 }, { "L2", 4 } } )
+

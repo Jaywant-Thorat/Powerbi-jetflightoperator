@@ -1,0 +1,7 @@
+expression DossierDonnees = "C:\AurumJet\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 8705b5d8-d120-51d4-a01c-58110a1a3142
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

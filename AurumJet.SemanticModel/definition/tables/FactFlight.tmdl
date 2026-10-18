@@ -1,0 +1,202 @@
+table FactFlight
+	lineageTag: 6af2dac3-7298-52bd-aa1b-49acc7c4ccc8
+
+	column FlightID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 28dbb638-5cc7-5aa1-bf32-5fb75daa6a5e
+		summarizeBy: none
+		sourceColumn: FlightID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlightNo
+		dataType: string
+		lineageTag: be8013e7-c27b-5ed7-8924-efe45132791c
+		summarizeBy: none
+		sourceColumn: FlightNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 0ded962e-22ce-59a0-b4dc-21b773bf542d
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AircraftID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1cbdb690-0217-53ff-9d3a-39001278c4ad
+		summarizeBy: none
+		sourceColumn: AircraftID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a7e73416-9deb-5250-85d4-380feacb79ec
+		summarizeBy: none
+		sourceColumn: ClientID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Origin
+		dataType: string
+		lineageTag: 9fa2569d-bd8e-56e7-8e94-337064aa3ec5
+		summarizeBy: none
+		sourceColumn: Origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column Destination
+		dataType: string
+		lineageTag: 90e462a8-18d1-5c3a-a342-4832e115c12a
+		summarizeBy: none
+		sourceColumn: Destination
+
+		annotation SummarizationSetBy = Automatic
+
+	column DistanceKm
+		dataType: int64
+		formatString: #,0
+		lineageTag: 40b06204-d446-5a67-b462-4c02b13bca8e
+		summarizeBy: none
+		sourceColumn: DistanceKm
+
+		annotation SummarizationSetBy = Automatic
+
+	column CheckIn
+		dataType: dateTime
+		formatString: hh:nn
+		lineageTag: e3ae157a-a484-5c43-9bf9-a4ba77834e2e
+		summarizeBy: none
+		sourceColumn: CheckIn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Boarding
+		dataType: dateTime
+		formatString: hh:nn
+		lineageTag: 8ae9565e-43fc-5168-8b5c-304db6e916b4
+		summarizeBy: none
+		sourceColumn: Boarding
+
+		annotation SummarizationSetBy = Automatic
+
+	column TakeOff
+		dataType: dateTime
+		formatString: hh:nn
+		lineageTag: cb594ad4-d78c-5317-b21b-39c503e7cb57
+		summarizeBy: none
+		sourceColumn: TakeOff
+
+		annotation SummarizationSetBy = Automatic
+
+	column Landing
+		dataType: dateTime
+		formatString: hh:nn
+		lineageTag: ff72eb35-cc2b-5484-9196-b33b320c5312
+		summarizeBy: none
+		sourceColumn: Landing
+
+		annotation SummarizationSetBy = Automatic
+
+	column DurationMin
+		dataType: int64
+		formatString: 0
+		lineageTag: 8642e3be-cd50-5f0e-af2c-d8a6a286afd4
+		summarizeBy: none
+		sourceColumn: DurationMin
+
+		annotation SummarizationSetBy = Automatic
+
+	column Passengers
+		dataType: int64
+		formatString: 0
+		lineageTag: cfe0e76c-1206-50f0-899f-a2280a42a9ce
+		summarizeBy: none
+		sourceColumn: Passengers
+
+		annotation SummarizationSetBy = Automatic
+
+	column BaggageKg
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d812f7d-0fc1-5010-b714-61585e7d7bd7
+		summarizeBy: none
+		sourceColumn: BaggageKg
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: 9a27feb7-38f6-599d-8c8f-1a5514c85801
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 48c37de3-a9cd-5f72-9727-e6799ae181fb
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column CruiseKnots
+		dataType: int64
+		formatString: 0
+		lineageTag: f21a04ab-7766-54c0-b5b2-bb3c57e83985
+		summarizeBy: none
+		sourceColumn: CruiseKnots
+
+		annotation SummarizationSetBy = Automatic
+
+	column RevenueEUR
+		dataType: double
+		formatString: #,0 €
+		lineageTag: 7a1b5bf5-325d-50e8-a69d-fb561840f687
+		summarizeBy: none
+		sourceColumn: RevenueEUR
+
+		annotation SummarizationSetBy = Automatic
+
+	column DelayMin
+		dataType: int64
+		formatString: 0
+		lineageTag: 17e6bb43-c0f7-5f16-aca5-274c3d632f13
+		summarizeBy: none
+		sourceColumn: DelayMin
+
+		annotation SummarizationSetBy = Automatic
+
+	column DelayCause
+		dataType: string
+		lineageTag: 12a64924-909d-548d-b765-70552c632149
+		summarizeBy: none
+		sourceColumn: DelayCause
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactFlight = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DossierDonnees & "FactFlight.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"FlightID", Int64.Type}, {"FlightNo", type text}, {"Date", type date}, {"AircraftID", Int64.Type}, {"ClientID", Int64.Type}, {"Origin", type text}, {"Destination", type text}, {"DistanceKm", Int64.Type}, {"CheckIn", type datetime}, {"Boarding", type datetime}, {"TakeOff", type datetime}, {"Landing", type datetime}, {"DurationMin", Int64.Type}, {"Passengers", Int64.Type}, {"BaggageKg", Int64.Type}, {"Type", type text}, {"Status", type text}, {"CruiseKnots", Int64.Type}, {"RevenueEUR", type number}, {"DelayMin", Int64.Type}, {"DelayCause", type text}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

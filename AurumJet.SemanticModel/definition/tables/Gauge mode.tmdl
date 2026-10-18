@@ -1,0 +1,26 @@
+table 'Gauge mode'
+	lineageTag: 14e05aa8-e9be-5879-b609-e18c01f87103
+
+	column Mode
+		dataType: string
+		lineageTag: 5cf19907-2924-59e3-b12e-c16f502d2ae0
+		summarizeBy: none
+		sourceColumn: [Mode]
+		sortByColumn: Ordre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordre
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c8993339-043a-5978-a69a-5065767791df
+		summarizeBy: none
+		sourceColumn: [Ordre]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Gauge mode' = calculated
+		mode: import
+		source = DATATABLE ( "Mode", STRING, "Ordre", INTEGER, { { "Speed", 1 }, { "Load", 2 } } )
+

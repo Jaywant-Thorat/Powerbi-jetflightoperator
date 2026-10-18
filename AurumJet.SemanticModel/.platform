@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "AurumJet"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2439f81c-c6f4-5d75-9e71-023e215cae60"
+  }
+}

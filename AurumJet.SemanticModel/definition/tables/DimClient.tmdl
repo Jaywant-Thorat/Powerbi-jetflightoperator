@@ -1,0 +1,72 @@
+table DimClient
+	lineageTag: 2c5b9588-dfe7-5a01-b2df-fc72ddae7840
+
+	column ClientID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 10987e75-fe61-5c06-9a91-edeb1b7d4670
+		summarizeBy: none
+		sourceColumn: ClientID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		lineageTag: 1fccd384-231f-5036-84f4-f615ec558775
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: 5eee30b7-9a89-5675-8768-e73306e2a446
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Client
+		dataType: string
+		lineageTag: df033af2-5b6a-5fd3-9581-4531357dd2be
+		summarizeBy: none
+		sourceColumn: Client
+
+		annotation SummarizationSetBy = Automatic
+
+	column Phone
+		dataType: string
+		lineageTag: 2271f665-1b59-5ebf-a298-6a424ceb77c9
+		summarizeBy: none
+		sourceColumn: Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tier
+		dataType: string
+		lineageTag: 1d968f45-6d6b-5e33-a37f-9ba888181125
+		summarizeBy: none
+		sourceColumn: Tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: b506adbc-4490-5f01-b57b-6a7e4d361d16
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimClient = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DossierDonnees & "DimClient.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"ClientID", Int64.Type}, {"FirstName", type text}, {"LastName", type text}, {"Client", type text}, {"Phone", type text}, {"Tier", type text}, {"Country", type text}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

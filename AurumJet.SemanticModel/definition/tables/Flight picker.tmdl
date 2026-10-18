@@ -1,0 +1,39 @@
+table 'Flight picker'
+	lineageTag: 648f9ed8-f8ed-5d41-acc2-c6623155dc70
+
+	column FlightNo
+		dataType: string
+		lineageTag: f4f2f74c-ea5a-5358-b799-137c4271a493
+		summarizeBy: none
+		sourceColumn: [FlightNo]
+		sortByColumn: Ordre
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlightID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1e13b0c7-f7ab-5aa8-9d9b-fbf08828fd79
+		summarizeBy: none
+		sourceColumn: [FlightID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordre
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c3fa08cc-725e-5a02-8ddd-811efb313946
+		summarizeBy: none
+		sourceColumn: [Ordre]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Flight picker' = calculated
+		mode: import
+		source =
+				VAR _t = FILTER ( FactFlight, FactFlight[Date] = DATE ( 2026, 10, 15 ) )
+				RETURN SELECTCOLUMNS ( _t, "FlightNo", FactFlight[FlightNo], "FlightID", FactFlight[FlightID],
+				    "Ordre", RANKX ( _t, FactFlight[TakeOff], , ASC ) )
+

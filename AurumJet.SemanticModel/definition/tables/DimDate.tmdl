@@ -1,0 +1,113 @@
+table DimDate
+	lineageTag: 4efb0833-26c1-5d40-9c3b-c30f49bc5497
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: dd/mm/yyyy
+		lineageTag: a895eeef-91e7-5f65-afa2-48369956b298
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 750a18ad-c69d-56f3-91dc-b45f1f2b3ce0
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNum
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 24e2b121-f5ff-50ee-8eb8-d30406da6ea2
+		summarizeBy: none
+		sourceColumn: MonthNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: cb4a0e67-f85d-5622-b1b5-e66079ed6e44
+		summarizeBy: none
+		sourceColumn: MonthKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: 3125e2f3-3b6e-59dd-bcc3-1e390da168db
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MonthName
+		dataType: string
+		lineageTag: 8dfeee0e-6ae3-5598-aaf2-d622153a354a
+		summarizeBy: none
+		sourceColumn: MonthName
+		sortByColumn: MonthNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthShort
+		dataType: string
+		lineageTag: 22a36260-ce76-5fd5-97d3-80e25b80174a
+		summarizeBy: none
+		sourceColumn: MonthShort
+		sortByColumn: MonthNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: c8fb2ba8-dd52-5bfb-b51c-c99d6ca8af5b
+		summarizeBy: none
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekdayNum
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c7208ac5-b6b5-532b-bfa9-d5db426d8632
+		summarizeBy: none
+		sourceColumn: WeekdayNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday
+		dataType: string
+		lineageTag: 6e6647e8-e1a0-5b11-abbd-242258f0ee54
+		summarizeBy: none
+		sourceColumn: Weekday
+		sortByColumn: WeekdayNum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DossierDonnees & "DimDate.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"Date", type date}, {"Year", Int64.Type}, {"MonthNum", Int64.Type}, {"MonthKey", Int64.Type}, {"Month", type date}, {"MonthName", type text}, {"MonthShort", type text}, {"Day", Int64.Type}, {"WeekdayNum", Int64.Type}, {"Weekday", type text}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,20 @@
+relationship 57049dac-16de-59dd-ab1e-fa4f900c330f
+	fromColumn: FactFlight.Date
+	toColumn: DimDate.Date
+
+relationship 0e6a324f-f9eb-5a51-895c-f09b960f6906
+	fromColumn: FactFlight.AircraftID
+	toColumn: DimAircraft.AircraftID
+
+relationship d85e2836-e861-5d44-a5cd-b31739dbfce6
+	fromColumn: DimAircraft.ModelID
+	toColumn: DimModel.ModelID
+
+relationship f157026d-ff19-5927-8f8e-eee3c42312c5
+	fromColumn: FactFlight.ClientID
+	toColumn: DimClient.ClientID
+
+relationship 5ed3cb4f-8715-5a6d-86f1-82d40bc4e5c0
+	fromColumn: FactCancellation.Date
+	toColumn: DimDate.Date
+

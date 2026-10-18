@@ -1,0 +1,67 @@
+table FactCancellation
+	lineageTag: b4d86f12-b79c-53af-83a9-6928372e6828
+
+	column CancellationID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 00c333f9-17f5-5bd5-a96a-f9cce1dee411
+		summarizeBy: none
+		sourceColumn: CancellationID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: d37bbe81-e341-546b-ab24-d7e1c3b867f2
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FlightNo
+		dataType: string
+		lineageTag: 9012fc67-1cea-53b8-8f1f-98e51d2113f6
+		summarizeBy: none
+		sourceColumn: FlightNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Origin
+		dataType: string
+		lineageTag: b2a9bc28-6d73-5bd6-a7ef-6b5fbaa4cec9
+		summarizeBy: none
+		sourceColumn: Origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column Destination
+		dataType: string
+		lineageTag: bd73b265-fe49-507c-8333-13dce7a45862
+		summarizeBy: none
+		sourceColumn: Destination
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cause
+		dataType: string
+		lineageTag: 24033bf4-b94c-5fd8-be1d-6696a94dd1ef
+		summarizeBy: none
+		sourceColumn: Cause
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactCancellation = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DossierDonnees & "FactCancellation.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"CancellationID", Int64.Type}, {"Date", type date}, {"FlightNo", type text}, {"Origin", type text}, {"Destination", type text}, {"Cause", type text}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

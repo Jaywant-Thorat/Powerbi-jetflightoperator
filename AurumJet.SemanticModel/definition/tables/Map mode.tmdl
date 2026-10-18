@@ -1,0 +1,26 @@
+table 'Map mode'
+	lineageTag: b744f1c1-40a1-5d7f-9e65-d0f4a7b33fe4
+
+	column Mode
+		dataType: string
+		lineageTag: 209926ee-9f9b-5ac1-9897-d4f4897e6c84
+		summarizeBy: none
+		sourceColumn: [Mode]
+		sortByColumn: Ordre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordre
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: aef267bf-5a41-5158-8573-0384906fbff3
+		summarizeBy: none
+		sourceColumn: [Ordre]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Map mode' = calculated
+		mode: import
+		source = DATATABLE ( "Mode", STRING, "Ordre", INTEGER, { { "Live", 1 }, { "Network", 2 } } )
+
